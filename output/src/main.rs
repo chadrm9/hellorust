@@ -1,6 +1,10 @@
 use std::io::{self, Write};
+use log::{info, warn};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    env_logger::init();
+    info!("starting up");
+
     // macros
     let xs = vec![1, 2, 3];
     println!("The list is: {:?}", xs);
@@ -11,7 +15,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // progress bar
     let pb = indicatif::ProgressBar::new(100);
     for i in 0..100 {
-        // do hard work
+        warn!("do hard work");
         pb.println(format!("[+] finished #{}", i));
         pb.inc(1);
     }
